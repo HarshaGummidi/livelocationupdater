@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Location Sender</title>
+  </head>
+
+  <body>
+    <h1>Location Information</h1>
+    <p id="location-info">{{ location_message }}</p>
+    <button onclick="startSendingLocation()">Start Sending Location</button>
+    <button onclick="stopSendingLocation()">Stop Sending Location</button>
+    <p id="result">{{ result }}</p>
+    <script>
+      var intervalId;
+
+      function startSendingLocation() {
+        intervalId = setInterval(sendLocation, 30000);
+      }
+
+      function stopSendingLocation() {
+        if (intervalId) {
+          clearInterval(intervalId);
+          intervalId = null;
+        }
+      }
+
+      function sendLocation() {
+        fetch("/send_location")
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("result").innerText = data.result;
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+    </script>
+  </body>
+</html>
