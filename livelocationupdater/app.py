@@ -4,13 +4,13 @@ import geocoder
 
 app = Flask(__name__)
 
-account_sid = 'AC194204e5d3e9532978a39eb190ad4960'
+account_sid = 'AC4ddb9c4403eed5407527d6b2e96f4738'
 
-auth_token = '196102f5fa3a53fc48460224b280c077'
+auth_token = 'e26972205b3b319cbb8974c657ea9bed'
 
-twilio_phone_number = '+12052705339'
+twilio_phone_number = '+15169792125'
 
-recipient_phone_number = '+917702014320'
+recipient_phone_number = '+918499881720'
 
 def send_location_sms(latitude, longitude):
 
